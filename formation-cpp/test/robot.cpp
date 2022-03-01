@@ -1,20 +1,35 @@
-#include<iostream>
-#include"linalg.h"
-#include"def.h"
+#include"robot.h"
 
-using namespace std;
-
-int main()
+void my_smtrx(alglib::real_2d_array &out, const alglib::real_1d_array &in)
 {
-    int Xuu=50,Yvv=25,Zww=25,Kpp=40,Mqq=15,Nrr=15;  //二次阻尼系数
-    int Xu=40,Yv=25,Zw=25,Kp=40,Mq=15,Nr=5;         //一次阻尼系数
-    int Xua=30,Yva=40,Zwa=30,Kpa=1,Mqa=1,Nra=1;     //附加质量
-    alglib::real_2d_array addmassM("[[Xua,0,0,0,0,0],[0,Yva,0,0,0,0],[0,0,Zwa,0,0,0],[0,0,0,Kpa,0,0], [0,0,0,0,Mqa,0],[0,0,0,0,0,Nra]]");
-    // 二次阻尼参数矩阵
-    alglib::real_2d_array Dr_quad("[[Xu,0,0,0,0,0],[0,Yv,0,0,0,0],[0,0,Zw,0,0,0],[0,0,0,Kp,0,0], [0,0,0,0,Mq,0],[0,0,0,0,0,Nr]]");
-    // 线性阻尼参数矩阵
-    alglib::real_2d_array Dr_linear("[[Xuu,0,0,0,0,0],[0,Yvv,0,0,0,0],[0,0,Zww,0,0,0],[0,0,0,Kpp,0,0], [0,0,0,0,Mqq,0],[0,0,0,0,0,Nrr]]");
-                            
+    out[0][0] = 0; 
+    out[0][1] = -in[3];
+    out[0][2] = in[2];
+
+    out[1][0] = in[3]; 
+    out[1][1] = 0;
+    out[1][2] = -in[1];
+
+    out[2][0] = -in[2]; 
+    out[2][1] = in[1];
+    out[2][2] = 0; 
 }
 
-void diag(alglib::real_2d_array* )
+void vector2diag(const int n, alglib::real_2d_array &out, const alglib::real_1d_array &in)
+{
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            if(i==j) out[i][j]=in[i];
+            else out[i][j]=0;
+        }
+    }
+}
+void matrix_eye(const int n, alglib::real_2d_array &out)
+{
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            if(i==j) out[i][j]=1;
+            else out[i][j]=0;
+        }
+    }
+}
