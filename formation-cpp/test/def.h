@@ -1,23 +1,24 @@
 #ifndef DEF_H_
 #define DEF_H_
 // 仿真参数
-#define data_num 10000   // 数据数量
-#define step     0.02    // 计算间隔时间，50hz
+const int data_num=10000;   // 数据数量
+const double step=0.02;   // 计算间隔时间，50hz
 
 // 数据更新频率设置，单位为hz
-#define SBL_update_rate    1 
-#define VO_update_rate     5 
-#define IMU_update_rate    200 
-#define MAG_update_rate    50 
-#define SLAM_update_rate   2 
-#define press_update_rate  20 
+const int SBL_update_rate=  1; 
+const int VO_update_rate=   5; 
+const int IMU_update_rate=  200; 
+const int MAG_update_rate=  50; 
+const int SLAM_update_rate= 2; 
+const int press_update_rate=20; 
 
-#define g 9.81
+const double g=9.81;
 
 // 机器人刚体参数，根据机器人参数确定
-#define m   30
-#define rgb 0.025;
-#define Gravity m*g;   // weight
-#define Buoyancy Gravity;  // 浮力等于重力，或者略大于重力也行
+const double AUV_m=30;
+const double AUV_rgb=0.025;
+const int Xua=30,Yva=40,Zwa=30,Kpa=1,Mqa=1,Nra=1;     //附加质量
+const int Xu=40,Yv=25,Zw=25,Kp=40,Mq=15,Nr=5;         //一次阻尼系数
+const int Xuu=50,Yvv=25,Zww=25,Kpp=40,Mqq=15,Nrr=15;  //二次阻尼系数
 
 #endif

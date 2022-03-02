@@ -68,6 +68,7 @@
 // #include <stdio.h>
 // #include <math.h>
 // #include "linalg.h"
+// #include "matchange.h"
 
 // using namespace alglib;
 
@@ -75,6 +76,7 @@
 // int main(int argc, char **argv)
 // {
 //     real_2d_array a = "[[1,-1],[1,1]]";
+//     real_2d_array b = "[[1,-1],[1,1]]";
 //     ae_int_t info;
 //     matinvreport rep;
 //     rmatrixinverse(a, info, rep);
@@ -83,9 +85,14 @@
 //     printf("%.4f\n", double(rep.r1)); // EXPECTED: 0.5
 //     printf("%.4f\n", double(rep.rinf)); // EXPECTED: 0.5
 
+//     std::cout << "cout:" << std::endl;
 //     std::cout << a.tostring(2).c_str() << std::endl;
 //     std::cout << "a.tostring(2)" << std::endl;
 //     std::cout << a.tostring(2) << std::endl;
+
+//     matrix_eyes(2,b);
+//     std::cout << b.tostring(2) << std::endl;
 //     return 0;
+
     
 // }
